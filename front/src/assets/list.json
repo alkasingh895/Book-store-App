@@ -1,0 +1,143 @@
+[
+    {
+       "id":1,
+       "name": "HTML and CSS",
+       "title":"Design and Build Websites",
+       "price":0,
+       "category":"free",
+       "image":"https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books_23-2149342941.jpg?w=2000"
+    },
+
+     {
+       "id":2,
+       "name": "The Road to React",
+       "title":" Your Journey to Master React.js",
+       "price":0,
+       "category":"free",
+       "image":"https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books_23-2149342941.jpg?w=2000"
+    },
+
+     {
+       "id":3,
+       "name": "Don't Make Me Think",
+       "title":"A Common Sense Approach to Web Usability",
+       "price":200,
+       "category":"related development",
+       "image":"https://i.etsystatic.com/15216885/r/il/0813dc/5170145579/il_fullxfull.5170145579_mk5h.jpg"
+    },
+
+     {
+       "id":4,
+       "name": "Responsive Web Design",
+       "title":"HTML5 and CSS",
+       "price":0,
+       "category":"free",
+       "image":"https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books_23-2149342941.jpg?w=2000"
+    },
+
+     {
+       "id":5,
+       "name": " Pro Git",
+       "title":"Everything You Need to Know",
+       "price":0,
+       "category":"free",
+       "image":"https://i.etsystatic.com/15216885/r/il/0813dc/5170145579/il_fullxfull.5170145579_mk5h.jpg"
+    },
+
+     {
+       "id":6,
+       "name": " Web Application Security",
+       "title":"Exploitation and Countermeasures for Modern Web Apps",
+       "price":0,
+       "category":"free",
+       "image":"https://i.etsystatic.com/15216885/r/il/0813dc/5170145579/il_fullxfull.5170145579_mk5h.jpg"
+    },
+
+     {
+       "id":7,
+       "name": "Eloquent JavaScript",
+       "title":"Modern JavaScript Programming",
+       "price":0,
+       "category":"free",
+       "image":"https://i.etsystatic.com/15216885/r/il/0813dc/5170145579/il_fullxfull.5170145579_mk5h.jpg"
+    },
+
+     {
+       "id":8,
+       "name": "Node.js Design Patterns",
+       "title":"Backend Architecture with Node.js",
+       "price":0,
+       "category":"free",
+       "image":"https://static.vecteezy.com/system/resources/previews/000/427/700/original/books-stack-realistic-vector.jpg"
+    },
+
+     {
+       "id":9,
+       "name": "Fullstack React",
+       "title":"React-based Full-Stack Web Development",
+       "price":0,
+       "category":"free",
+       "image":"https://static.vecteezy.com/system/resources/previews/000/427/700/original/books-stack-realistic-vector.jpg"
+    },
+
+     {
+       "id":10,
+       "name": "Don't Make Me Think",
+       "title":"UI/UX Design Principles",
+       "price":0,
+       "category":"free ",
+       "image":"https://static.vecteezy.com/system/resources/previews/000/427/700/original/books-stack-realistic-vector.jpg"
+    },
+
+     {
+       "id":11,
+       "name": "Responsive Web Design with HTML5 and CSS",
+       "title":"Mobile-Friendly Web Development",
+       "price":730,
+       "category":"Mobile-Friendly",
+       "image":"https://crocoblock.com/wp-content/uploads/2022/11/HTML-and-CSS.-Design-and-Build-Websites-by-Jon-Duckett.png"
+    },
+
+     {
+       "id":12,
+       "name": "High Performance Websites",
+       "title":"Speed & Optimization for Web Projects",
+       "price":780,
+       "category":" Web Projects",
+       "image":"https://pictures.abebooks.com/isbn/9780134481265-us.jpg"
+    },
+
+     {
+       "id":13,
+       "name": "Eloquent JavaScript",
+       "title":"JavaScript Programming",
+       "price":230,
+       "category":"Programming",
+       "image":"https://th.bing.com/th/id/R.a05ec761506d7b0a73a266b16a62d79f?rik=xCw21MVr6lx%2fXQ&riu=http%3a%2f%2fprodimage.images-bn.com%2fpimages%2f2940165302107_p0_v1_s1200x630.jpg&ehk=roMgdreh08L3em1c7brOrgfiKTNbsjl1sIkJWcFtkPs%3d&risl=&pid=ImgRaw&r=0"
+    },
+
+     {
+       "id":14,
+       "name": "React Framework",
+       "title":"The Road to React",
+       "price":440,
+       "category":"Road to React",
+       "image":"https://thectoclub.com/wp-content/uploads/sites/13/2023/09/Learning-Web-Design-by-Jennifer-Niederst-Robbins-web-development-840x1024.jpg"
+    },
+
+     {
+       "id":15,
+       "name": "Full-Stack Development ",
+       "title":"The Complete Guide to ReactJS and Friends",
+       "price":900,
+       "category":"Friends",
+       "image":"https://s3-eu-west-1.amazonaws.com/cover2.galileo-press.de/print/9781493224371_800.png"
+    }
+
+     
+    
+
+
+
+     
+]
