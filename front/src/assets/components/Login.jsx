@@ -1,14 +1,51 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import axios from 'axios';
+import toast from 'react-hot-toast';
+
 
 function Login() {
   const navigate = useNavigate();  // <-- Added
   const { register, handleSubmit, formState: { errors } } = useForm();
 
-  const onSubmit = data => {
-    console.log("Form Data:", data);
-    // API ya login logic
+  
+    const onSubmit = async ( data) => {
+      console.log("Form data:", data);  
+    const userInfo={
+      email:data.email,
+      password:data.password,
+    };
+    
+    
+   
+   await axios.post("http://localhost:5001/user/login",userInfo)
+    .then((res)=>{
+      console.log("Full Response:", res.data);
+console.log("Logged in user:", res.data.user); 
+
+      if(res.data){
+        
+        toast.success(" Login Successfully");
+        document.getElementById("my_modal_3")?.close();
+
+        setTimeout(()=> {
+         localStorage.setItem("User",JSON.stringify(res.data.user));
+          window.location.reload();
+        }, 1000);
+        
+       
+      }
+      
+    })
+    .catch((err)=>{
+      if(err.response){
+        console.log(err);
+        toast.error("Error: "+ err.response.data.message );
+        setTimeout(() => {}, 2000);
+      }
+    });
+    
   };
 
   useEffect(() => {

@@ -35,7 +35,7 @@ function Banner() {
 <div className="validator-hint hidden">Enter valid email address</div>
 
 </div>
-<button className=" btn  btn-secondary">Secondary</button>
+<button className=" btn  btn-secondary">Get Started</button>
 </div>
 
 
