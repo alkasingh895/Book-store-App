@@ -1,11 +1,14 @@
 import React, { useEffect } from 'react';
 import {  useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import axios from "axios";
+// import axios from "axios";
+import api from "../../api/axios.js";
 import toast from 'react-hot-toast';
+import { useAuth } from '../../context/AuthProvider';
 
 function Signup() {
 
+  const [, setAuthUser] = useAuth();
   const location=useLocation()
   const navigate = useNavigate();
   const from=location.state?.from?.pathname || "/";
@@ -24,16 +27,19 @@ function Signup() {
       
 
     }
-   await axios.post("http://localhost:5001/user/signup",userInfo)
+   // await axios.post("http://localhost:5001/user/signup",userInfo)
+   await api.post("/user/signup", userInfo)
     .then((res)=>{
       console.log(res.data)
       if(res.data){
         toast.success("signup Successfuly")
+        localStorage.setItem("User",JSON.stringify(res.data.user));
+        setAuthUser(res.data.user);
         navigate(from ,{replace:true});
         
 
       }
-      localStorage.setItem("User",JSON.stringify(res.data.user));
+      // localStorage.setItem("User",JSON.stringify(res.data.user));
     })
     .catch((err)=>{
       if(err.response){
@@ -52,6 +58,10 @@ function Signup() {
       setTimeout(() => {
         document.getElementById("my_modal_3")?.showModal();
       }, 100);
+    }
+    const shouldShowSignup = localStorage.getItem("showSignup");
+    if (shouldShowSignup === "true") {
+      localStorage.removeItem("showSignup");
     }
   }, []);
 

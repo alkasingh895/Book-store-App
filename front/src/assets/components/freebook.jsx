@@ -6,8 +6,10 @@ import Slider from "react-slick";
 
 
 
-import axios from "axios"
-import Card from './card';
+// import axios from "axios"
+import api from "../../api/axios.js"
+// import Card from './card';
+import Card from './Card.jsx';
 
 
 
@@ -17,7 +19,8 @@ function Freebook() {
   useEffect(() => {
     const getBook = async () => {
       try {
-        const res = await axios.get("http://localhost:5001/book");
+        // const res = await axios.get("http://localhost:5001/book");
+        const res = await api.get("/book");
         const data = res.data.filter((data) => data.category === "free");
         console.log(data);
         
@@ -51,7 +54,7 @@ var settings = {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          initialSlide: 2
+          initialSlide: 0
         }
       },
       {
@@ -67,22 +70,29 @@ var settings = {
     
   return (
   <>
-  <div className='max-w-screen-2xl mx-auto md:px-20 px-4'>
+  <div className='max-w-screen-2xl mx-auto md:px-20 px-4 bg-white text-slate-900 dark:bg-slate-900 dark:text-white py-8'>
     <div>
-      <h1 className='font-semibold text-xl pb-2'>Free Offered Courses</h1>
-    <p>
+      <h1 className='font-semibold text-xl pb-2 text-slate-900 dark:text-white'>Free Offered Courses</h1>
+    <p className="text-slate-700 dark:text-gray-300">
     Learn,ispum dolor sit amet consectetur adipisicing elit Dolor,
     et totam Tempora amet atque expedita, quae totam sed  partiatur 
     corporis at veniam est voluptas animi!
     </p>
     </div>
   
-<div>
-<Slider {...settings}>
-        {book.map( (item)=>(
-          <Card item={item} key={item.id}/>
-        ) )}
+  {/* ========== CHANGE: slider padding — cards niche cut na hon, har slide same width ========== */}
+  <div className="mt-8 pb-20 min-h-[420px]">
+    {book.length === 0 ? (
+      <p className="text-sm text-gray-500">Free books load nahi hui. Backend check karo.</p>
+    ) : (
+      <Slider {...settings}>
+        {book.map((item) => (
+          <div key={item._id} className="px-2 outline-none">
+            <Card item={item} />
+          </div>
+        ))}
       </Slider>
+    )}
   </div>
   </div>
 

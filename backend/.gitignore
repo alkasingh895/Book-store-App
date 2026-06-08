@@ -1,0 +1,9 @@
+# ========== NAYI FILE: backend/.gitignore ==========
+# Kyon: .env mein MONGO_URL / secrets hain — Git par commit nahi hone chahiye
+
+node_modules
+.env
+.env.local
+.env.production
+npm-debug.log*
+.DS_Store

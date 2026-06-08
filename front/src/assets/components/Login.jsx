@@ -1,13 +1,16 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import axios from 'axios';
+// import axios from 'axios';
+import api from '../../api/axios.js';
 import toast from 'react-hot-toast';
+import { useAuth } from "../../context/AuthProvider";
 
 
 function Login() {
   const navigate = useNavigate();  // <-- Added
   const { register, handleSubmit, formState: { errors } } = useForm();
+  const [authUser, setAuthUser] = useAuth();
 
   
     const onSubmit = async ( data) => {
@@ -19,7 +22,8 @@ function Login() {
     
     
    
-   await axios.post("http://localhost:5001/user/login",userInfo)
+   // await axios.post("http://localhost:5001/user/login",userInfo)
+   await api.post("/user/login", userInfo)
     .then((res)=>{
       console.log("Full Response:", res.data);
 console.log("Logged in user:", res.data.user); 
@@ -31,8 +35,16 @@ console.log("Logged in user:", res.data.user);
 
         setTimeout(()=> {
          localStorage.setItem("User",JSON.stringify(res.data.user));
-          window.location.reload();
+
+         localStorage.setItem(
+  "token",
+  res.data.token
+);
+setAuthUser(res.data.user);
+          navigate("/");
         }, 1000);
+
+
         
        
       }
@@ -100,6 +112,17 @@ console.log("Logged in user:", res.data.user);
                 {...register("password", { required: "Password is required" })}
               />
               {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}
+
+             <p
+  className="text-sm text-blue-500 cursor-pointer mt-2"
+  onClick={() => navigate("/forgot-password")}
+>
+  Forgot Password?
+</p>
+
+
+
+
             </div>
 
             {/* Login Button and Signup Link */}

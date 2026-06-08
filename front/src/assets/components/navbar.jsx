@@ -1,17 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import Login from './Login';
 import Logout from './Logout';
 import { useAuth } from '../../context/AuthProvider';
+import { useAdmin } from '../../context/AdminProvider';
+import { Link } from "react-router-dom";
+import { TbHeartPlus } from "react-icons/tb";
 
 function Navbar() {
-  const[authUser,setAuthUser]=useAuth()
+  const [authUser, setAuthUser] = useAuth();
+  const[adminUser,setAdminUser]=useAdmin()
 
 
 
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
   const element = document.documentElement;
 
-  useEffect(() => {
+  // CHANGE: useLayoutEffect — light mode par page pehle frame se white (dark class jaldi hatao)
+  useLayoutEffect(() => {
     if (theme === "dark") {
       element.classList.add("dark");
       document.body.classList.add("dark");
@@ -36,9 +41,35 @@ function Navbar() {
   const navItems = (
     <>
       <li><a href='/'>Home</a></li>
-      <li><a href='/Course'>Course</a></li>
-      <li><a href='/Contact'>Contact</a></li>
-      <li><a href='/'>About</a></li>
+      {/* <li><a href='/Course'>Course</a></li> */}
+      {/* <li><a href='/Contact'>Contact</a></li> */}
+      <li><a href='/course'>Course</a></li>
+
+<li>
+  <a
+    href='/cart'
+    className="font-semibold text-pink-500"
+  >
+    🛒 Cart
+  </a>
+</li>
+
+
+<Link
+  to="/watchlist"
+  className="flex items-center gap-1 font-semibold text-pink-500 hover:text-pink-600 duration-200"
+>
+  <TbHeartPlus className="text-xl" />
+  Watchlist
+</Link>
+
+
+
+
+
+<li><a href='/contact'>Contact</a></li>
+<li><a href='/admin'>Admin</a></li>
+<li><a href='/'>About</a></li>
     </>
   );
 
@@ -63,7 +94,26 @@ function Navbar() {
                   tabIndex={0}
                   className="menu menu-sm dropdown-content bg-white dark:bg-gray-900 dark:text-white rounded-box z-1 mt-3 w-52 p-2 shadow">
                   {navItems}
-                </ul>
+
+                 {authUser && (
+    <>
+      <li>
+        <a href="/profile">
+          My Profile
+        </a>
+      </li>
+
+      <li>
+        <a href="/my-orders">
+          My Orders
+        </a>
+      </li>
+    </>
+  )}
+</ul>
+
+
+                
               </div>
               <a className="text-2xl font-bold cursor-pointer">bookStore</a>
             </div>
@@ -71,22 +121,67 @@ function Navbar() {
             {/* End */}
             <div className="navbar-end space-x-3">
               {/* Desktop Nav Items */}
-              <div className="navbar-center hidden lg:flex">
+              <div className="navbar-center hidden lg:flex mr-40 ">
                 <ul className="menu menu-horizontal px-1">{navItems}</ul>
               </div>
 
-              {/* Search Input */}
-              <div className="hidden md:block">
-                <label className="px-2 py-1 border rounded-md flex items-center gap-2">
-                  <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2.5" fill="none" stroke="currentColor">
-                      <circle cx="11" cy="11" r="8"></circle>
-                      <path d="m21 21-4.3-4.3"></path>
-                    </g>
-                  </svg>
-                  <input type="text" className="grow outline-none" required placeholder="Search" />
-                </label>
-              </div>
+              
+
+              
+ {authUser && (
+  <div className="hidden lg:block">
+
+    <div className="dropdown dropdown-end">
+
+      <div
+        tabIndex={0}
+        role="button"
+        className="btn btn-ghost"
+      >
+        👤 {authUser.fullname}
+      </div>
+
+      <ul
+        tabIndex={0}
+        className="
+        menu
+        menu-sm
+        dropdown-content
+        bg-base-100
+        rounded-box
+        z-[1]
+        mt-3
+        w-52
+        p-2
+        shadow
+        "
+      >
+
+        <li>
+          <a href="/profile">
+            My Profile
+          </a>
+        </li>
+
+        <li>
+          <a href="/my-orders">
+            My Orders
+          </a>
+        </li>
+
+        <li>
+          <Logout />
+        </li>
+
+      </ul>
+
+    </div>
+
+  </div>
+)}
+
+
+
 
               {/* Theme Toggle */}
               <label className="swap swap-rotate">
@@ -116,19 +211,45 @@ function Navbar() {
               </label>
 
 
-           {authUser? (
-            <Logout/>
-          ):(
-           //Login Button  
-               <div className=''>
-                <a className="bg-black dark:bg-white text-white dark:text-black px-3 py-2 rounded-md hover:bg-slate-800 dark:hover:bg-gray-300 duration-300 cursor-pointer"
-                onClick={()=>document.getElementById("my_modal_3").showModal()}>
-                  Login
-                </a>
-                <Login/>
-              </div>
+          {!authUser && (
+  <div className='flex gap-2'>
+    <a
+      className="bg-black dark:bg-white text-white dark:text-black px-3 py-2 rounded-md hover:bg-slate-800 dark:hover:bg-gray-300 duration-300 cursor-pointer"
+      onClick={() =>
+        document.getElementById("my_modal_3").showModal()
+      }
+    >
+      Login
+    </a>
 
-          )}
+    <Login />
+  </div>
+)}
+          
+          {!adminUser && (
+  <button
+    onClick={() =>
+      document
+        .getElementById("admin_login_modal")
+        .showModal()
+    }
+    className="border border-gray-400 dark:border-gray-600 text-black dark:text-white px-2 py-2 rounded-md  whitespace-nowrap hover:bg-gray-100 dark:hover:bg-slate-700 duration-300"
+  >
+    🔐 Admin Login
+  </button>
+)}
+
+{adminUser && (
+  <button
+    onClick={() => {
+      localStorage.removeItem("AdminUser");
+      setAdminUser(undefined);
+    }}
+    className="border border-red-500 text-red-500 px-2 py-2 rounded-md  whitespace-nowrap hover:bg-red-500 hover:text-white duration-300"
+  >
+    Logout Admin
+  </button>
+)}
          
               
             </div>

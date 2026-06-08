@@ -7,7 +7,8 @@ function footer() {
      <hr className="border-t border-gray-200" />
 
     
-  <footer className="footer footer-horizontal footer-center text-base-content rounded p-10 dark:bg-slate-900 dark:text-white">
+  {/* CHANGE: light mode footer — pehle sirf dark:bg tha, light mein base-content dark ho jata tha */}
+  <footer className="footer footer-horizontal footer-center bg-gray-50 text-slate-800 rounded p-10 dark:bg-slate-900 dark:text-white">
   <nav className="grid grid-flow-col gap-4">
     <a className="link link-hover">About us</a>
     <a className="link link-hover">Contact</a>

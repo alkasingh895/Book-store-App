@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="384" height="288" viewBox="0 0 384 288" role="img" aria-label="Book store banner">
+  <rect width="384" height="288" rx="12" fill="#e2e8f0"/>
+  <rect x="48" y="56" width="120" height="160" rx="4" fill="#94a3b8"/>
+  <rect x="184" y="72" width="152" height="24" rx="4" fill="#cbd5e1"/>
+  <rect x="184" y="112" width="120" height="16" rx="4" fill="#cbd5e1"/>
+  <rect x="184" y="140" width="140" height="16" rx="4" fill="#cbd5e1"/>
+  <text x="192" y="248" text-anchor="middle" fill="#64748b" font-family="system-ui,sans-serif" font-size="18">bookStore</text>
+</svg>

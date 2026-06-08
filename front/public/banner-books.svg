@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="450" viewBox="0 0 600 450" role="img" aria-label="Books illustration">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e3a5f"/>
+      <stop offset="100%" style="stop-color:#0f172a"/>
+    </linearGradient>
+    <linearGradient id="book1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f472b6"/>
+      <stop offset="100%" style="stop-color:#db2777"/>
+    </linearGradient>
+    <linearGradient id="book2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#60a5fa"/>
+      <stop offset="100%" style="stop-color:#2563eb"/>
+    </linearGradient>
+    <linearGradient id="book3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#34d399"/>
+      <stop offset="100%" style="stop-color:#059669"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="450" rx="24" fill="url(#bg)"/>
+  <rect x="80" y="100" width="90" height="260" rx="6" fill="url(#book1)" transform="rotate(-8 125 230)"/>
+  <rect x="170" y="85" width="95" height="275" rx="6" fill="url(#book2)"/>
+  <rect x="270" y="95" width="88" height="255" rx="6" fill="url(#book3)" transform="rotate(6 314 222)"/>
+  <rect x="360" y="110" width="85" height="240" rx="6" fill="#fbbf24" transform="rotate(-4 402 230)"/>
+  <rect x="450" y="120" width="80" height="230" rx="6" fill="#a78bfa" transform="rotate(10 490 235)"/>
+  <ellipse cx="300" cy="380" rx="200" ry="25" fill="#000" opacity="0.25"/>
+  <text x="300" y="420" text-anchor="middle" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="28" font-weight="bold">bookStore</text>
+</svg>
