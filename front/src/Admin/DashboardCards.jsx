@@ -4,7 +4,7 @@ import OrderStatusChart
 from "../charts/OrderStatusChart";
 import RevenueChart from "../charts/RevenueChart";
 import { dashboardApi } from "./dashboard.api";
-
+import api from "../api/axios";
 import TopSellingBooksChart
 from "../charts/TopSellingBooksChart";
 
@@ -35,21 +35,17 @@ function DashboardCards() {
 
 
 const fetchActivities = async () => {
-
   try {
-
-    const response = await fetch(
-      "http://localhost:5000/activity"
+    const res = await api.get(
+      "/activity"
     );
 
-    const data =
-      await response.json();
-
-    setActivities(data);
+    setActivities(res.data);
 
   } catch (error) {
 
     console.log(error);
+
   }
 };
 
@@ -227,10 +223,6 @@ const fetchActivities = async () => {
   </div>
 
 </div>
-
-
-
-
 
 
 

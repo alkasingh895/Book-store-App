@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import api from "../api/axios";
 import { 
   User as UserIcon, 
 
@@ -58,14 +58,20 @@ useEffect(() => {
     }
   }, [user?._id]);
 
+  
+
   const fetchOrders = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/order/user/${user._id}`);
+     const res = await api.get(
+  `/order/user/${user._id}`
+);
       setOrders(res.data);
     } catch (error) {
       console.error("Error fetching orders:", error);
     }
   };
+
+
 
   const totalOrders = orders.length;
   const totalSpent = orders.reduce((sum, order) => sum + (order.totalAmount || 0), 0);
@@ -85,7 +91,8 @@ useEffect(() => {
       return;
     }
     try {
-      const res = await axios.post("http://localhost:5000/user/change-password", {
+     const res = await api.post(
+  "/user/change-password", {
         userId: user._id,
         oldPassword,
         newPassword,
@@ -102,7 +109,8 @@ useEffect(() => {
   const handleUpdateProfile = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.put("http://localhost:5000/user/update-profile", {
+     const res = await api.put(
+  "/user/update-profile", {
         userId: user._id,
         fullname,
         email,
@@ -120,7 +128,8 @@ useEffect(() => {
   const handleUpdateAddress = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.put("http://localhost:5000/user/update-address", {
+      const res = await api.put(
+  "/user/update-address", {
         userId: user._id,
         phone,
         address,
