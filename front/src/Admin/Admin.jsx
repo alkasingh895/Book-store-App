@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
-
+import api from "../api/axios";
 import { bookApi } from './bookManagement.api';
 import { formatBookForForm } from './bookManagement.model';
 import BookFormModal from './bookManagement.modal';
@@ -93,9 +93,15 @@ useEffect(() => {
 
     try {
 
-      const res = await fetch(
-        "http://localhost:5000/book/categories"
-      );
+
+     const res = await api.get(
+  "/book/categories"
+);
+
+setCategories(
+  res.data.categories || []
+);
+
 
       const data =
         await res.json();
@@ -113,9 +119,6 @@ useEffect(() => {
   fetchCategories();
 
 }, []);
-
-
-
 
 
 
@@ -170,10 +173,6 @@ const currentBooks = filteredBooks.slice(
 const totalPages = Math.ceil(
   filteredBooks.length / booksPerPage
 );
-
-
-
-
 
 
   const openAddModal = () => {
@@ -383,12 +382,6 @@ await bookApi.deleteBook(id, {
 </div>
 
 
-
-
-
-
-
-
         {loadingList ? (
 
           <div className='text-center py-20 text-slate-500 text-xl'>
@@ -437,8 +430,7 @@ await bookApi.deleteBook(id, {
   </>
 
 )}
-        
-
+      
       </div>
 
       <BookFormModal
