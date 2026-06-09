@@ -97,10 +97,11 @@ const session =
           line_items,
 
           success_url:
-            `http://localhost:5173/payment-success?orderId=${order._id}`,
+`https://book-store-6zhlvz7at-alka-singhs-projects.vercel.app/payment-success?orderId=${order._id}`,
 
-          cancel_url:
-            `http://localhost:5173/checkout`,
+
+         cancel_url:
+`https://book-store-6zhlvz7at-alka-singhs-projects.vercel.app/checkout`,
         });
 
       res.json({
