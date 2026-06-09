@@ -7,9 +7,9 @@ import {
   loadStripe,
 } from "@stripe/stripe-js";
 
+import api from "../api/axios";
 
 
-import axios from "axios";
 import { useNavigate , useLocation } from "react-router-dom";
 
 function Checkout() {
@@ -62,10 +62,9 @@ const buyNowBook =
 
       if (!user) return;
 
-      const res = await axios.get(
-        `http://localhost:5000/cart/${user._id}`
-      );
-
+      const res = await api.get(
+  `/cart/${user._id}`
+);
       setCartItems(res.data.cartItems);
     } catch (error) {
       console.log(error);
@@ -150,8 +149,8 @@ if (
   );
 
   const response =
-    await axios.post(
-      "http://localhost:5000/payment/create-checkout-session",
+    await api.post(
+  "/payment/create-checkout-session",
       {
         userId: user._id,
 
@@ -187,8 +186,8 @@ console.log("TOTAL PRICE =", totalPrice);
 
 
 
-  const res = await axios.post(
-  "http://localhost:5000/order/create",
+  const res =await api.post(
+  "/order/create",
   {
     userId: user._id,
 
@@ -217,9 +216,9 @@ console.log("TOTAL PRICE =", totalPrice);
 
 
   if (!buyNowBook) {
-  await axios.delete(
-    `http://localhost:5000/cart/clear/${user._id}`
-  );
+  await api.delete(
+  `/cart/clear/${user._id}`
+);
 }
 
 navigate("/my-orders");
