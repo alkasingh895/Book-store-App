@@ -51,9 +51,6 @@ const fetchActivities = async () => {
 
 
 
-
-
-
   useEffect(() => {
 
   fetchStats();
