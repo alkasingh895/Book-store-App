@@ -24,8 +24,10 @@ function Cart() {
 
       setCartItems(res.data.cartItems);
     } catch (error) {
-      console.log(error);
-    }
+  console.log(error);
+  console.log(error.response?.data);
+  alert(error.response?.data?.message || error.message);
+}
   };
 
   const removeFromCart = async (cartId) => {
