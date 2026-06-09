@@ -7,7 +7,7 @@ import {
   useSearchParams,
 } from "react-router-dom";
 
-import axios from "axios";
+import api from "../api/axios";
 
 function PaymentSuccess() {
 
@@ -31,9 +31,9 @@ function PaymentSuccess() {
 
       try {
 
-        await axios.get(
-          `http://localhost:5000/payment/verify?orderId=${orderId}`
-        );
+       await api.get(
+  `/payment/verify?orderId=${orderId}`
+);
 
         const user =
           JSON.parse(
@@ -42,9 +42,9 @@ function PaymentSuccess() {
             )
           );
 
-        await axios.delete(
-          `http://localhost:5000/cart/clear/${user._id}`
-        );
+        await api.delete(
+  `/cart/clear/${user._id}`
+);
 
         navigate(
           "/my-orders"
