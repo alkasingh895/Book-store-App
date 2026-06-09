@@ -21,7 +21,7 @@ const [sortBy, setSortBy] =
   useEffect(() =>{
 const getBook=async()=>{
     try {
-     // const res = await axios.get("http://localhost:5001/book");
+     
      const res = await api.get("/book");
      console.log(res.data);
      setBook(res.data);

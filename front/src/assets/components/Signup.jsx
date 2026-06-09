@@ -27,7 +27,7 @@ function Signup() {
       
 
     }
-   // await axios.post("http://localhost:5001/user/signup",userInfo)
+   
    await api.post("/user/signup", userInfo)
     .then((res)=>{
       console.log(res.data)
