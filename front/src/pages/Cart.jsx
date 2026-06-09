@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api/axios";
 import { useNavigate } from "react-router-dom";
 
 function Cart() {
@@ -18,9 +18,9 @@ function Cart() {
 
       if (!user) return;
 
-      const res = await axios.get(
-        `http://localhost:5000/cart/${user._id}`
-      );
+      const res = await api.get(
+  `/cart/${user._id}`
+);
 
       setCartItems(res.data.cartItems);
     } catch (error) {
@@ -30,10 +30,9 @@ function Cart() {
 
   const removeFromCart = async (cartId) => {
     try {
-      await axios.delete(
-        `http://localhost:5000/cart/${cartId}`
-      );
-
+      await api.delete(
+  `/cart/${cartId}`
+);
       fetchCart();
     } catch (error) {
       console.log(error);
@@ -50,8 +49,8 @@ function Cart() {
         localStorage.getItem("User")
       );
 
-      await axios.put(
-        "http://localhost:5000/cart/update",
+     await api.put(
+  "/cart/update",
         {
           userId: user._id,
           bookId,
