@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api/axios";
 
 function AdminOrders() {
   const [orders, setOrders] = useState([]);
@@ -9,52 +9,49 @@ function AdminOrders() {
   }, []);
 
   const fetchOrders = async () => {
-    try {
-      const res = await axios.get(
-        "http://localhost:5000/order/all"
-      );
+  try {
+    const res = await api.get("/order/all");
 
-      setOrders(res.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+    setOrders(res.data);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
   const handleStatusChange = async (
-    orderId,
-    status
-  ) => {
-    try {
-      await axios.put(
-        `http://localhost:5000/order/status/${orderId}`,
-        { status }
-      );
+  orderId,
+  status
+) => {
+  try {
+    await api.put(
+      `/order/status/${orderId}`,
+      { status }
+    );
 
-      fetchOrders();
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
+    fetchOrders();
+  } catch (error) {
+    console.log(error);
+  }
+};
   const updateReturnStatus = async (
-    orderId,
-    bookId,
-    returnStatus
-  ) => {
-    try {
-      await axios.put(
-        `http://localhost:5000/order/return-status/${orderId}`,
-        {
-          bookId,
-          returnStatus,
-        }
-      );
+  orderId,
+  bookId,
+  returnStatus
+) => {
+  try {
+    await api.put(
+      `/order/return-status/${orderId}`,
+      {
+        bookId,
+        returnStatus,
+      }
+    );
 
-      fetchOrders();
-    } catch (error) {
-      console.log(error);
-    }
-  };
+    fetchOrders();
+  } catch (error) {
+    console.log(error);
+  }
+};
 
   return (
     <div className="p-6">

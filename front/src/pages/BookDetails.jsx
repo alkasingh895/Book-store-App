@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom";
 import api from "../api/axios";
+import { useParams, useNavigate } from "react-router-dom";
+
 
 
 function BookDetails() {
@@ -101,10 +101,9 @@ const regenerateInsight =
 
     setAiInsight("");
 
-    const aiRes = await axios.get(
-      `http://localhost:5000/api/ai-recommendations/${id}`
-    );
-
+    const aiRes = await api.get(
+  `/api/ai-recommendations/${id}`
+);
     setAiInsight(
       aiRes.data.insight
     );
@@ -139,9 +138,9 @@ const copyInsight = async () => {
 const fetchBook = async () => {
   try {
 
-    const res = await axios.get(
-      `http://localhost:5000/book/${id}`
-    );
+    const res = await api.get(
+  `/book/${id}`
+);
 
     setBook(res.data);
 
@@ -161,9 +160,9 @@ if (cachedInsight) {
 
 } else {
 
-  const aiRes = await axios.get(
-    `http://localhost:5000/api/ai-recommendations/${id}`
-  );
+  const aiRes = await api.get(
+  `/api/ai-recommendations/${id}`
+);
 
   setAiInsight(
     aiRes.data.insight
