@@ -173,6 +173,30 @@ function Navbar() {
           <Logout />
         </li>
 
+
+
+
+      {!adminUser && (
+  <li>
+    <a
+      onClick={() =>
+        document
+          .getElementById("admin_login_modal")
+          .showModal()
+      }
+    >
+      🔐 Admin Login
+    </a>
+  </li>
+)}
+
+
+
+
+
+
+
+
       </ul>
 
     </div>
@@ -233,7 +257,7 @@ function Navbar() {
         .getElementById("admin_login_modal")
         .showModal()
     }
-    className="border border-gray-400 dark:border-gray-600 text-black dark:text-white px-2 py-2 rounded-md  whitespace-nowrap hover:bg-gray-100 dark:hover:bg-slate-700 duration-300"
+    className=" hidden md:block border border-gray-400 dark:border-gray-600 text-black dark:text-white px-2 py-2 rounded-md  whitespace-nowrap hover:bg-gray-100 dark:hover:bg-slate-700 duration-300"
   >
     🔐 Admin Login
   </button>
