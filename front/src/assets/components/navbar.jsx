@@ -110,6 +110,26 @@ function Navbar() {
       </li>
     </>
   )}
+
+     
+      {!adminUser && (
+  <li>
+    <a
+      onClick={() =>
+        document
+          .getElementById("admin_login_modal")
+          .showModal()
+      }
+    >
+      🔐 Admin Login
+    </a>
+  </li>
+)}
+
+
+
+
+
 </ul>
 
 
@@ -120,6 +140,8 @@ function Navbar() {
 
             {/* End */}
             <div className="navbar-end space-x-3">
+
+
               {/* Desktop Nav Items */}
               <div className="navbar-center hidden lg:flex mr-40 ">
                 <ul className="menu menu-horizontal px-1">{navItems}</ul>
@@ -176,19 +198,6 @@ function Navbar() {
 
 
 
-      {!adminUser && (
-  <li>
-    <a
-      onClick={() =>
-        document
-          .getElementById("admin_login_modal")
-          .showModal()
-      }
-    >
-      🔐 Admin Login
-    </a>
-  </li>
-)}
 
 
 
@@ -235,6 +244,28 @@ function Navbar() {
               </label>
 
 
+
+
+{!adminUser && (
+  <button
+    onClick={() =>
+      document
+        .getElementById("admin_login_modal")
+        .showModal()
+    }
+    className="hidden md:block border border-gray-400 dark:border-gray-600 text-black dark:text-white px-2 py-2 rounded-md whitespace-nowrap hover:bg-gray-100 dark:hover:bg-slate-700 duration-300"
+  >
+    🔐 Admin Login
+  </button>
+)}
+
+
+
+
+
+
+
+
           {!authUser && (
   <div className='flex gap-2'>
     <a
@@ -249,19 +280,7 @@ function Navbar() {
     <Login />
   </div>
 )}
-          
-          {!adminUser && (
-  <button
-    onClick={() =>
-      document
-        .getElementById("admin_login_modal")
-        .showModal()
-    }
-    className=" hidden md:block border border-gray-400 dark:border-gray-600 text-black dark:text-white px-2 py-2 rounded-md  whitespace-nowrap hover:bg-gray-100 dark:hover:bg-slate-700 duration-300"
-  >
-    🔐 Admin Login
-  </button>
-)}
+     
 
 {adminUser && (
   <button
